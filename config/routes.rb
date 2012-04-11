@@ -1,7 +1,7 @@
 ClassManager::Application.routes.draw do
-  resources :assignments
+  resources :groups
 
-  resources :classrooms
+  resources :assignments
 
   resources :administrators
 
