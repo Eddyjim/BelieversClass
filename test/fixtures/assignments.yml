@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  description: MyString
+  classroom_id: 1
+  teacher_id: 1
+
+two:
+  id: 1
+  description: MyString
+  classroom_id: 1
+  teacher_id: 1
