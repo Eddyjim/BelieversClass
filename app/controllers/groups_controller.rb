@@ -1,9 +1,13 @@
 class GroupsController < ApplicationController
+  #before_filter :validateAuth
+
+  def accesGroup
+  end 
   # GET /groups
   # GET /groups.json
   def index
-    @teacher = Teacher.find(params[teacher_id])	
-    @groups = @teacher.groups
+    #@teacher = Teacher.find(params[teacher_id])	
+    @groups = Group.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,9 +18,9 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @teacher = Teacher.find(params[:teacher_id])	
-    @group = Group.find(params[:group_id])
-    @asignments = group.asignments
+    #@teacher = Teacher.find(params[:teacher_id])	
+    @group = Group.find(params[:id])
+    @assignments = @group.assignments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,10 +31,10 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.json
   def new
-    @teacher = Teacher.find(params[:teacher_id])
+    #@teacher = Teacher.find(params[:teacher_id])
     @group = Group.new
-    @group.teacher_id = @teacher.id
-    @teacher.groups << @group
+    #@group.teacher_id = @teacher.id
+    #@teacher.groups << @group
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,8 +44,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @teacher = Teacher.find(params[:teacher_id])
     @group = Group.find(params[:id])
+    @teacher = Teacher.find(@group.teacher_id)
   end
 
   # POST /groups
@@ -63,8 +67,8 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @teacher = Teacher.find(params[:teacher_id])
     @group = Group.find(params[:id])
+    @teacher = Teacher.find(@group.teacher_id)
 
     respond_to do |format|
       if @group.update_attributes(params[:group])

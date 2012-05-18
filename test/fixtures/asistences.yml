@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  dateOfClass: 2012-05-16
+  leson: MyString
+
+two:
+  id: 1
+  dateOfClass: 2012-05-16
+  leson: MyString

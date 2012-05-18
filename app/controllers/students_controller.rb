@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  #before_filter :validateAuth
   # GET /students
   # GET /students.json
   def index
@@ -25,6 +26,11 @@ class StudentsController < ApplicationController
   # GET /students/new.json
   def new
     @student = Student.new
+    if(session[:type]=='teacher')
+	@student.group = Teacher.find(session[:id]).group
+	@group = @student.group
+	@group.students << @student
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,8 +50,12 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, :notice => 'Student was successfully created.' }
-        format.json { render :json => @student, :status => :created, :location => @student }
+	if(session[:type]!='teacher')
+          format.html { redirect_to @student, :notice => 'Student was successfully created.' }
+          format.json { render :json => @student, :status => :created, :location => @student }
+	else
+	  redirect_to Teacher.find(session[:id])
+	end
       else
         format.html { render :action => "new" }
         format.json { render :json => @student.errors, :status => :unprocessable_entity }

@@ -1,3 +1,9 @@
 class Teacher < ActiveRecord::Base
-	has_and_belongs_to_one	:group
+	validates :name, :presence => true
+	validates :uname, :presence => true
+	validates :uname, :uniqueness => true
+	validates :lastname, :presence => true
+	validates :password, :presence => true
+
+	has_one	:group
 end

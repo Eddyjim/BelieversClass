@@ -20,6 +20,17 @@
   <%= @assignment.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<%if (session[:type] == 'teacher')%>
+  <p>
+  <b> Uploads </b>
+  <% @assignment.uploads.each do |upload| %>
+	<p>
+	<%=upload.student.name%> 
+	<%=link_to 'Check', group_assignment_upload_path(@group,@assignment,upload)%>
+  <%end%>
+  <p>
+	<%= link_to 'Edit', edit_group_assignment_path(@group,@assignment) %> |
+<%elsif (session[:type]=='student')%>
+  <%= link_to 'Upload', new_group_assignment_upload_path(@group,@assignment)%>
+<%end%>
+<%= link_to 'Back', @group %>

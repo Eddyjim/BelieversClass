@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @upload.id %>
+</p>
+
+<p>
+  <b>Assignment:</b>
+  <%= @upload.assignment_id %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%= @upload.student_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @upload.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_assignment_upload_path(@group,@assignment,@upload) %> |
+<%= link_to 'Back', @group %>

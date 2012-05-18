@@ -1,0 +1,38 @@
+<%= form_for([@group,@asistence]) do |f| %>
+  <% if @asistence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asistence.errors.count, "error") %> prohibited this asistence from being saved:</h2>
+
+      <ul>
+      <% @asistence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :dateOfClass %><br />
+    <%= f.date_select :dateOfClass %>
+  </div>
+  <div class="field">
+    <%= f.label :leson %><br />
+    <%= f.text_field :leson %>
+  </div>
+  <div>
+  <% @group.students.each do |student| %>
+  <p>
+	<%= check_box_tag 'students_ids[]', student%>
+	<%= student.name%>
+  <% end %>
+  </div>
+  <p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

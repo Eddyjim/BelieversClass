@@ -1,0 +1,27 @@
+<h1>Listing asistences</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Dateofclass</th>
+    <th>Leson</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @asistences.each do |asistence| %>
+  <tr>
+    <td><%= asistence.id %></td>
+    <td><%= asistence.dateOfClass %></td>
+    <td><%= asistence.leson %></td>
+    <td><%= link_to 'Show', asistence %></td>
+    <td><%= link_to 'Edit', edit_asistence_path(asistence) %></td>
+    <td><%= link_to 'Destroy', asistence, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Asistence', new_asistence_path %>

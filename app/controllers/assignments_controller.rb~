@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+  #before_filter :validateAuth
+
   # GET /assignments
   # GET /assignments.json
   def index
@@ -26,6 +28,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new.json
   def new
     @assignment = Assignment.new
+    @group = Group.find(params[:group_id])
+    @group.assignments << @assignment
 
     respond_to do |format|
       format.html # new.html.erb
@@ -61,7 +65,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.update_attributes(params[:assignment])
-        format.html { redirect_to @assignment, :notice => 'Assignment was successfully updated.' }
+        format.html { redirect_to @assignment.group, :notice => 'Assignment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

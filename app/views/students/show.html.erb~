@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Id:</b>
-  <%= @student.id %>
+  <b>Uname:</b>
+  <%= @student.uname %>
 </p>
 
 <p>
@@ -35,6 +35,8 @@
   <%= @student.address %>
 </p>
 
-<%= link_to 'Group' show_group_path(@student.group_id,@student)%>
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Group', @student.group%>
+<%= link_to 'Edit', edit_student_path(@student) %> 
+<% if (session[:id]!=nil) %>
+<%= link_to 'Logout', session_path, :method=>:delete%>
+<% end %>

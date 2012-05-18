@@ -1,6 +1,7 @@
 class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
+      t.string :uname
       t.integer :id
       t.string :name
       t.string :lastname
@@ -9,6 +10,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :email
       t.string :address
       t.integer :group_id
+      t.string :password
 
       t.timestamps
     end

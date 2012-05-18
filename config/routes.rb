@@ -1,4 +1,5 @@
 BelieversClass::Application.routes.draw do
+
   resources :administrators
 
   resources :teachers
@@ -7,9 +8,15 @@ BelieversClass::Application.routes.draw do
 
   resources :groups do
 		
-	resources :assignments
+	resources :assignments do
+		resources :uploads	
+	end
 
-  end  
+	resources :asistences
+
+  end 
+  
+  resource :session 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

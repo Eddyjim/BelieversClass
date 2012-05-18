@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @asistence.id %>
+</p>
+
+<p>
+  <b>Dateofclass:</b>
+  <%= @asistence.dateOfClass %>
+</p>
+
+<p>
+  <b>Leson:</b>
+  <%= @asistence.leson %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_asistence_path(@group,@asistence) %> |
+<%= link_to 'Back', @group %>

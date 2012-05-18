@@ -1,5 +1,8 @@
 class Group < ActiveRecord::Base
+	validates :level, :presence => true
+
 	has_many 		:students
-	has_and_belongs_to_one	:teacher
+	belongs_to		:teacher
 	has_many		:assignments
+	has_many		:asistences
 end

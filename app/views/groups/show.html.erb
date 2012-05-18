@@ -16,10 +16,34 @@
 </p>
 
 <p>
-  <b>Asingments</b>
-  <%= %>
+  <b>Asignments</b>
+  <%@group.assignments.each do |asignment|%>
+  <p>
+  	<%= asignment.description%> <%=asignment.duedate%>
+	<%= link_to 'Show', group_assignment_path(@group,asignment) %>
+	<% if (session[:type] == 'student') %>
+		<%= link_to 'Upload', new_group_assignment_upload_path(@group,asignment)%>
+	<% end %>
+  <%end%>
+<p>
+  <% if (session[:type] == 'teacher') %>
+	<%= link_to 'New Asignment', new_group_assignment_path(@group) %> |
+  <% end%>
+<p>
 
-<%= link_to 'Assistence' asistence_group_path(@group) | %>
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<% if (session[:type] == 'admin') %>
+	<%= link_to 'Edit', edit_group_path(@group) %> |
+	<%= link_to 'Back', Administrator.find(session[:id]) %>
+<% end%>
+<% if (session[:type] == 'student') %>
+	<%= link_to 'Back', Student.find(session[:id]) %> |
+<% end%>
+<% if (session[:type] == 'teacher') %>
+	<%= link_to 'Asistence', new_group_asistence_path(@group)%> |
+	<%= link_to 'New Student', new_student_path %>
+	<%= link_to 'Back', Teacher.find(session[:id]) %> |
+<% end%>
+<% if (session[:id]!=nil) %>
+<%= link_to 'Logout', session_path, :method=>:delete%>
+<% end %>
 
