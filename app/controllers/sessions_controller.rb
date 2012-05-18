@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
     elsif(params[:type] == 'student') 
       @sudents = Student.all
       @sudents.each do |student|
-	if (student.name == params[:user] && student.password == params[:password])
-	   session[:name]= student.name
+	if (student.uname == params[:user] && student.password == params[:password])
+	   session[:name]= student.uname
 	   session[:id]=student.id
 	   session[:type]='student'
 	   @user = student
@@ -29,8 +29,8 @@ class SessionsController < ApplicationController
     elsif(params[:type]=='teacher')
       @teachers = Teacher.all
       @teachers.each do |teacher|
- 	if (teacher.name == params[:user] && teacher.password == params[:password])
-	   session[:name]= teacher.name
+ 	if (teacher.uname == params[:user] && teacher.password == params[:password])
+	   session[:name]= teacher.uname
 	   session[:id]=teacher.id
 	   session[:type]='teacher'
 	   @user = teacher

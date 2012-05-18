@@ -43,6 +43,7 @@ class AsistencesController < ApplicationController
   # POST /asistences
   # POST /asistences.json
   def create
+    @group = Group.find(params[:group_id])
     @asistence = Asistence.new(params[:asistence])
 
     respond_to do |format|

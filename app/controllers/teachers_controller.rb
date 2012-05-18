@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  #before_filter :isTeacher
+  before_filter :isTeacher
   
   def isTeacher
      if(session[:type]==nil)

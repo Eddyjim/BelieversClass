@@ -1,7 +1,7 @@
-Feature <Teacher add a Student>
+Feature <Administrator Add Teacher>
 
-As a Teacher
-I want to add a Student
+As an Administrator
+I want to add a new Teacher
 so that it can be added to the Group
 	
 Scenario: Succesfull creation of a Student
@@ -15,4 +15,3 @@ Scenario: Succesfull creation of a Student
 	Then the page should be redirected
 	And the student should be registered
 
-	

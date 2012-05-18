@@ -1,5 +1,5 @@
 class AdministratorsController < ApplicationController
-  before_filter :validateAuth, :except => [:index] 
+  before_filter :validateAuth, :except => [:index,:new,:create] 
   
   # GET /administrators
   # GET /administrators.json

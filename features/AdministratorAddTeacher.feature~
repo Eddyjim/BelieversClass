@@ -15,4 +15,3 @@ Scenario: Succesfull creation of a Student
 	Then the page should be redirected
 	And the student should be registered
 
-	

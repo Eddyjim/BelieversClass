@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120516193416) do
   end
 
   create_table "students", :force => true do |t|
+    t.string   "uname"
     t.string   "name"
     t.string   "lastname"
     t.integer  "cc"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20120516193416) do
   end
 
   create_table "teachers", :force => true do |t|
+    t.string   "uname"
     t.string   "name"
     t.string   "lastname"
     t.integer  "phone"

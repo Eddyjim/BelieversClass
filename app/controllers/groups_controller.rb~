@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  #before_filter :validateAuth
+  before_filter :validateAuth
 
   def accesGroup
   end 
